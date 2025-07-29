@@ -6,9 +6,13 @@
     <parent>
         <groupId>io.github.mkpaz</groupId>
         <artifactId>atlantafx-parent</artifactId>
-        <version>2.0.1</version>
+        <version>2.1.0</version>
     </parent>
     <artifactId>atlantafx-sampler</artifactId>
+
+    <name>AtlantaFX Sampler</name>
+    <description>JavaFX CSS theme collection plus additional controls</description>
+    <url>https://github.com/mkpaz/atlantafx</url>
 
     <properties>
         <app.launcher>atlantafx.sampler.Launcher</app.launcher>
@@ -78,6 +82,10 @@
         <dependency>
             <groupId>fr.brouillard.oss</groupId>
             <artifactId>cssfx</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.mkpaz</groupId>
+            <artifactId>devtoolsfx-gui</artifactId>
         </dependency>
         <dependency>
             <groupId>net.datafaker</groupId>
@@ -253,12 +261,13 @@
                             <output>${build.package.runtimeImageDir}</output>
                             <args>
                                 <!-- additional options to shrink resulting image even more -->
-                                <arg>--compress=2</arg>
+                                <arg>--compress=zip-9</arg>
                                 <arg>--include-locales=en</arg>
                                 <arg>--no-header-files</arg>
                                 <arg>--no-man-pages</arg>
                                 <arg>--strip-debug</arg>
                                 <arg>--verbose</arg>
+                                <arg>--generate-cds-archive</arg>
                             </args>
                         </configuration>
                     </execution>
@@ -303,14 +312,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <!-- skip module deployment -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
             </plugin>
         </plugins>
     </build>

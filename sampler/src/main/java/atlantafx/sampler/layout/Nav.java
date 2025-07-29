@@ -3,23 +3,14 @@
 package atlantafx.sampler.layout;
 
 import atlantafx.sampler.page.Page;
-import atlantafx.sampler.page.components.BreadcrumbsPage;
-import atlantafx.sampler.page.components.CalendarPage;
-import atlantafx.sampler.page.components.CardPage;
-import atlantafx.sampler.page.components.CustomTextFieldPage;
-import atlantafx.sampler.page.components.DeckPanePage;
-import atlantafx.sampler.page.components.InputGroupPage;
-import atlantafx.sampler.page.components.MessagePage;
-import atlantafx.sampler.page.components.ModalPanePage;
-import atlantafx.sampler.page.components.NotificationPage;
-import atlantafx.sampler.page.components.PopoverPage;
-import atlantafx.sampler.page.components.TilePage;
-import atlantafx.sampler.page.components.ToggleSwitchPage;
+import atlantafx.sampler.page.components.*;
 import atlantafx.sampler.page.general.BBCodePage;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+
+import atlantafx.sampler.page.general.SelectableTextFlowPage;
 import javafx.scene.Node;
 import org.jetbrains.annotations.Nullable;
 
@@ -42,7 +33,10 @@ record Nav(String title,
         ModalPanePage.class,
         NotificationPage.class,
         PopoverPage.class,
+        SegmentedControlPage.class,
+        SelectableTextFlowPage.class,
         TilePage.class,
+        TabLinePage.class,
         ToggleSwitchPage.class
     );
 

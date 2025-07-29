@@ -9,6 +9,9 @@
     <a href="https://github.com/mkpaz/atlantafx/issues"><img src="https://img.shields.io/github/issues/mkpaz/atlantafx?style=for-the-badge" alt="Open Issues"></a>
     <a href="https://github.com/mkpaz/atlantafx/contributors"><img src="https://img.shields.io/github/contributors/mkpaz/atlantafx?5&style=for-the-badge" alt="Contributors"></a>
 </p>
+<p align="center">
+  <a href="https://www.jfx-central.com/libraries/atlantafx"><img src="https://img.shields.io/badge/Find_me_on-JFXCentral-blue?logo=googlechrome&logoColor=white&style=for-the-badge" alt="JFXCentral"></a>
+</p>
 
 <p align="center">
 Modern JavaFX CSS theme collection with additional controls.
@@ -91,6 +94,14 @@ public class Launcher extends Application {
 }
 ```
 
+### Starter Project
+
+If you use Maven you can quickly create a new project with AtlantaFX using the [starter](https://github.com/mkpaz/atlantafx-maven-starter):
+
+```sh
+git clone https://github.com/mkpaz/atlantafx-maven-starter
+```
+
 ### Local Installation
 
 If you don't want to use additional dependencies, you can download compiled CSS themes from the [GitHub Releases](https://github.com/mkpaz/atlantafx/releases). Unpack `AtlantaFX-*-themes.zip` and place it to your project's classpath.
@@ -105,6 +116,15 @@ Or use Java property:
 
 ```text
 -Djavafx.userAgentStylesheetUrl=[URL]
+```
+
+## Custom Themes
+
+AtlantaFX is written in modular SASS, so you can create your own CSS themes using AtlantaFX. 
+Here is the sample [repository](https://github.com/mkpaz/atlantafx-sample-theme):
+
+```sh
+git clone https://github.com/mkpaz/atlantafx-sample-theme
 ```
 
 ## Contributing

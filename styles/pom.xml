@@ -6,9 +6,13 @@
     <parent>
         <groupId>io.github.mkpaz</groupId>
         <artifactId>atlantafx-parent</artifactId>
-        <version>2.0.1</version>
+        <version>2.1.0</version>
     </parent>
     <artifactId>atlantafx-styles</artifactId>
+
+    <name>AtlantaFX Styles</name>
+    <description>JavaFX CSS theme collection plus additional controls</description>
+    <url>https://github.com/mkpaz/atlantafx</url>
 
     <properties>
         <scss.inputDir>${project.basedir}/src</scss.inputDir>

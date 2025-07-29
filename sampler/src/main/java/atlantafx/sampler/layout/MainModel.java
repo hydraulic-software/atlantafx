@@ -2,74 +2,28 @@
 
 package atlantafx.sampler.layout;
 
-import static atlantafx.sampler.layout.MainModel.SubLayer.PAGE;
-import static atlantafx.sampler.layout.MainModel.SubLayer.SOURCE_CODE;
-
 import atlantafx.sampler.event.DefaultEventBus;
 import atlantafx.sampler.event.NavEvent;
 import atlantafx.sampler.page.Page;
-import atlantafx.sampler.page.components.AccordionPage;
-import atlantafx.sampler.page.components.BreadcrumbsPage;
-import atlantafx.sampler.page.components.ButtonPage;
-import atlantafx.sampler.page.components.CalendarPage;
-import atlantafx.sampler.page.components.CardPage;
-import atlantafx.sampler.page.components.ChartPage;
-import atlantafx.sampler.page.components.CheckBoxPage;
-import atlantafx.sampler.page.components.ChoiceBoxPage;
-import atlantafx.sampler.page.components.ColorPickerPage;
-import atlantafx.sampler.page.components.ComboBoxPage;
-import atlantafx.sampler.page.components.ContextMenuPage;
-import atlantafx.sampler.page.components.CustomTextFieldPage;
-import atlantafx.sampler.page.components.DatePickerPage;
-import atlantafx.sampler.page.components.DeckPanePage;
-import atlantafx.sampler.page.components.DialogPage;
-import atlantafx.sampler.page.components.HtmlEditorPage;
-import atlantafx.sampler.page.components.InputGroupPage;
-import atlantafx.sampler.page.components.ListViewPage;
-import atlantafx.sampler.page.components.MenuBarPage;
-import atlantafx.sampler.page.components.MenuButtonPage;
-import atlantafx.sampler.page.components.MessagePage;
-import atlantafx.sampler.page.components.ModalPanePage;
-import atlantafx.sampler.page.components.NotificationPage;
-import atlantafx.sampler.page.components.PaginationPage;
-import atlantafx.sampler.page.components.PopoverPage;
-import atlantafx.sampler.page.components.ProgressIndicatorPage;
-import atlantafx.sampler.page.components.RadioButtonPage;
-import atlantafx.sampler.page.components.ScrollPanePage;
-import atlantafx.sampler.page.components.SeparatorPage;
-import atlantafx.sampler.page.components.SliderPage;
-import atlantafx.sampler.page.components.SpinnerPage;
-import atlantafx.sampler.page.components.SplitPanePage;
-import atlantafx.sampler.page.components.TabPanePage;
-import atlantafx.sampler.page.components.TableViewPage;
-import atlantafx.sampler.page.components.TextAreaPage;
-import atlantafx.sampler.page.components.TextFieldPage;
-import atlantafx.sampler.page.components.TilePage;
-import atlantafx.sampler.page.components.TitledPanePage;
-import atlantafx.sampler.page.components.ToggleButtonPage;
-import atlantafx.sampler.page.components.ToggleSwitchPage;
-import atlantafx.sampler.page.components.ToolBarPage;
-import atlantafx.sampler.page.components.TooltipPage;
-import atlantafx.sampler.page.components.TreeTableViewPage;
-import atlantafx.sampler.page.components.TreeViewPage;
-import atlantafx.sampler.page.general.AnimationsPage;
-import atlantafx.sampler.page.general.BBCodePage;
-import atlantafx.sampler.page.general.IconsPage;
-import atlantafx.sampler.page.general.ThemePage;
-import atlantafx.sampler.page.general.TypographyPage;
+import atlantafx.sampler.page.components.*;
+import atlantafx.sampler.page.general.*;
 import atlantafx.sampler.page.showcase.BlueprintsPage;
 import atlantafx.sampler.page.showcase.OverviewPage;
 import atlantafx.sampler.page.showcase.filemanager.FileManagerPage;
 import atlantafx.sampler.page.showcase.musicplayer.MusicPlayerPage;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.kordamp.ikonli.material2.Material2OutlinedAL;
 import org.kordamp.ikonli.material2.Material2OutlinedMZ;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+import static atlantafx.sampler.layout.MainModel.SubLayer.PAGE;
+import static atlantafx.sampler.layout.MainModel.SubLayer.SOURCE_CODE;
 
 public class MainModel {
 
@@ -98,7 +52,7 @@ public class MainModel {
 
     ///////////////////////////////////////////////////////////////////////////
     // Properties                                                            //
-    ///////////////////////////////////////////////////////////////////////////
+    /// ////////////////////////////////////////////////////////////////////////
 
     // ~
     private final ReadOnlyObjectWrapper<Class<? extends Page>> selectedPage = new ReadOnlyObjectWrapper<>();
@@ -127,6 +81,7 @@ public class MainModel {
             NAV_TREE.get(ThemePage.class),
             NAV_TREE.get(TypographyPage.class),
             NAV_TREE.get(BBCodePage.class),
+            NAV_TREE.get(SelectableTextFlowPage.class),
             NAV_TREE.get(AnimationsPage.class),
             NAV_TREE.get(IconsPage.class)
         );
@@ -193,6 +148,8 @@ public class MainModel {
             NAV_TREE.get(BreadcrumbsPage.class),
             NAV_TREE.get(MenuBarPage.class),
             NAV_TREE.get(PaginationPage.class),
+            NAV_TREE.get(SegmentedControlPage.class),
+            NAV_TREE.get(TabLinePage.class),
             NAV_TREE.get(TabPanePage.class)
         );
 
@@ -220,7 +177,8 @@ public class MainModel {
 
     ///////////////////////////////////////////////////////////////////////////
     // Nav Tree                                                              //
-    ///////////////////////////////////////////////////////////////////////////
+
+    /// ////////////////////////////////////////////////////////////////////////
 
     public static Map<Class<? extends Page>, NavTree.Item> createNavItems() {
         var map = new HashMap<Class<? extends Page>, NavTree.Item>();
@@ -229,6 +187,10 @@ public class MainModel {
         map.put(ThemePage.class, NavTree.Item.page(ThemePage.NAME, ThemePage.class));
         map.put(AnimationsPage.class, NavTree.Item.page(AnimationsPage.NAME, AnimationsPage.class));
         map.put(BBCodePage.class, NavTree.Item.page(BBCodePage.NAME, BBCodePage.class));
+        map.put(
+            SelectableTextFlowPage.class,
+            NavTree.Item.page(SelectableTextFlowPage.NAME, SelectableTextFlowPage.class)
+        );
         map.put(IconsPage.class, NavTree.Item.page(IconsPage.NAME, IconsPage.class));
         map.put(
             TypographyPage.class,
@@ -279,12 +241,14 @@ public class MainModel {
         );
         map.put(RadioButtonPage.class, NavTree.Item.page(RadioButtonPage.NAME, RadioButtonPage.class));
         map.put(ScrollPanePage.class, NavTree.Item.page(ScrollPanePage.NAME, ScrollPanePage.class));
+        map.put(SegmentedControlPage.class, NavTree.Item.page(SegmentedControlPage.NAME, SegmentedControlPage.class));
         map.put(SeparatorPage.class, NavTree.Item.page(SeparatorPage.NAME, SeparatorPage.class));
         map.put(SliderPage.class, NavTree.Item.page(SliderPage.NAME, SliderPage.class));
         map.put(SpinnerPage.class, NavTree.Item.page(SpinnerPage.NAME, SpinnerPage.class));
         map.put(SplitPanePage.class, NavTree.Item.page(SplitPanePage.NAME, SplitPanePage.class));
         map.put(TilePage.class, NavTree.Item.page(TilePage.NAME, TilePage.class));
         map.put(TableViewPage.class, NavTree.Item.page(TableViewPage.NAME, TableViewPage.class));
+        map.put(TabLinePage.class, NavTree.Item.page(TabLinePage.NAME, TabLinePage.class));
         map.put(TabPanePage.class, NavTree.Item.page(TabPanePage.NAME, TabPanePage.class));
         map.put(TextAreaPage.class, NavTree.Item.page(TextAreaPage.NAME, TextAreaPage.class));
         map.put(TextFieldPage.class, NavTree.Item.page(
@@ -310,7 +274,8 @@ public class MainModel {
 
     ///////////////////////////////////////////////////////////////////////////
     // Commands                                                              //
-    ///////////////////////////////////////////////////////////////////////////
+
+    /// ////////////////////////////////////////////////////////////////////////
 
     public void navigate(Class<? extends Page> page) {
         selectedPage.set(Objects.requireNonNull(page));
